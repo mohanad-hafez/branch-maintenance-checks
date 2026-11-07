@@ -1,0 +1,464 @@
+{
+  "id": "265c5388",
+  "task": "branchHousekeeping",
+  "cases": [
+    {
+      "id": "captured-zircote-dotgithub-20261107",
+      "partition": "captured_observational_case",
+      "input_origin": "actual_public_repository_metadata",
+      "input": {
+        "now": "2026-11-07T14:55:54.422Z",
+        "run_id": "local-capture-01",
+        "run_url": "local-capture-01",
+        "config": {
+          "repos": [
+            "zircote/.github"
+          ],
+          "excluded_repos": [
+            "zircote/swagger-php"
+          ]
+        },
+        "repositories": {
+          "zircote/.github": {
+            "archived": false,
+            "default_branch": "main",
+            "branches": [
+              {
+                "name": "chore/update-dependencies-dec-2025",
+                "sha": "ed12f62d3d5ea7ec0bfac387ddf33983e7742792",
+                "last_commit_at": "2025-12-28T22:41:51Z",
+                "author": "zircote",
+                "merged": false,
+                "behind": 184,
+                "comparison": {
+                  "base": "6d55ba68dd1c7bff34e3b77a25d279949eb8a3bf",
+                  "head": "ed12f62d3d5ea7ec0bfac387ddf33983e7742792",
+                  "status": "diverged"
+                },
+                "open_prs": []
+              },
+              {
+                "name": "copilot/sub-pr-1-again",
+                "sha": "0aa9c8cc2f5ad46c77549005fdf59587d75be3cd",
+                "last_commit_at": "2025-12-28T22:39:41Z",
+                "author": "Copilot",
+                "merged": false,
+                "behind": 184,
+                "comparison": {
+                  "base": "6d55ba68dd1c7bff34e3b77a25d279949eb8a3bf",
+                  "head": "0aa9c8cc2f5ad46c77549005fdf59587d75be3cd",
+                  "status": "diverged"
+                },
+                "open_prs": []
+              },
+              {
+                "name": "dependabot/github_actions/actions/attest-4.1.1",
+                "sha": "5c91c6a3e6ed351519fd144438bc7c4e8a49c42a",
+                "last_commit_at": "2026-06-29T09:47:55Z",
+                "author": "web-flow",
+                "merged": false,
+                "behind": 24,
+                "comparison": {
+                  "base": "6d55ba68dd1c7bff34e3b77a25d279949eb8a3bf",
+                  "head": "5c91c6a3e6ed351519fd144438bc7c4e8a49c42a",
+                  "status": "diverged"
+                },
+                "open_prs": [
+                  485
+                ]
+              },
+              {
+                "name": "dependabot/github_actions/actions/cache/restore-6.1.0",
+                "sha": "2989768903201d5f17c4a6e5991e022aaf9185d0",
+                "last_commit_at": "2026-07-06T09:50:19Z",
+                "author": "web-flow",
+                "merged": false,
+                "behind": 15,
+                "comparison": {
+                  "base": "6d55ba68dd1c7bff34e3b77a25d279949eb8a3bf",
+                  "head": "2989768903201d5f17c4a6e5991e022aaf9185d0",
+                  "status": "diverged"
+                },
+                "open_prs": [
+                  497
+                ]
+              },
+              {
+                "name": "dependabot/github_actions/astral-sh/setup-uv-8.3.2",
+                "sha": "7f9d8b3e7d1ba14caa72472f660f34ef0ba93ad7",
+                "last_commit_at": "2026-07-13T09:45:38Z",
+                "author": "web-flow",
+                "merged": false,
+                "behind": 6,
+                "comparison": {
+                  "base": "6d55ba68dd1c7bff34e3b77a25d279949eb8a3bf",
+                  "head": "7f9d8b3e7d1ba14caa72472f660f34ef0ba93ad7",
+                  "status": "diverged"
+                },
+                "open_prs": [
+                  501
+                ]
+              },
+              {
+                "name": "dependabot/github_actions/docker/build-push-action-7.3.0",
+                "sha": "bf1d51e26cc4269cc62e34a6325664dd7d15d492",
+                "last_commit_at": "2026-07-06T09:48:21Z",
+                "author": "web-flow",
+                "merged": false,
+                "behind": 15,
+                "comparison": {
+                  "base": "6d55ba68dd1c7bff34e3b77a25d279949eb8a3bf",
+                  "head": "bf1d51e26cc4269cc62e34a6325664dd7d15d492",
+                  "status": "diverged"
+                },
+                "open_prs": [
+                  496
+                ]
+              },
+              {
+                "name": "dependabot/github_actions/docker/login-action-4.4.0",
+                "sha": "53fe449785c0e832ac710b6e6a032c41e6c6c8a6",
+                "last_commit_at": "2026-07-06T09:48:16Z",
+                "author": "web-flow",
+                "merged": false,
+                "behind": 15,
+                "comparison": {
+                  "base": "6d55ba68dd1c7bff34e3b77a25d279949eb8a3bf",
+                  "head": "53fe449785c0e832ac710b6e6a032c41e6c6c8a6",
+                  "status": "diverged"
+                },
+                "open_prs": [
+                  495
+                ]
+              },
+              {
+                "name": "main",
+                "sha": "6d55ba68dd1c7bff34e3b77a25d279949eb8a3bf"
+              },
+              {
+                "name": "profile-update/30725154669",
+                "sha": "eb64abc6c645c27bb5cf03364defbce6c668031d",
+                "last_commit_at": "2026-08-02T00:25:15Z",
+                "author": "zircote-org-monitor[bot]",
+                "merged": false,
+                "behind": 1,
+                "comparison": {
+                  "base": "6d55ba68dd1c7bff34e3b77a25d279949eb8a3bf",
+                  "head": "eb64abc6c645c27bb5cf03364defbce6c668031d",
+                  "status": "diverged"
+                },
+                "open_prs": [
+                  504
+                ]
+              },
+              {
+                "name": "profile-update/31285564700",
+                "sha": "148029fffce94ae65577fefc39e64080a59011f9",
+                "last_commit_at": "2026-08-09T00:09:58Z",
+                "author": "zircote-org-monitor[bot]",
+                "merged": false,
+                "behind": 1,
+                "comparison": {
+                  "base": "6d55ba68dd1c7bff34e3b77a25d279949eb8a3bf",
+                  "head": "148029fffce94ae65577fefc39e64080a59011f9",
+                  "status": "diverged"
+                },
+                "open_prs": [
+                  505
+                ]
+              },
+              {
+                "name": "profile-update/31916391320",
+                "sha": "ac069729fc70aa920f0f404ab69efc6ed5f32fa1",
+                "last_commit_at": "2026-08-16T00:06:20Z",
+                "author": "zircote-org-monitor[bot]",
+                "merged": false,
+                "behind": 0,
+                "comparison": {
+                  "base": "6d55ba68dd1c7bff34e3b77a25d279949eb8a3bf",
+                  "head": "ac069729fc70aa920f0f404ab69efc6ed5f32fa1",
+                  "status": "ahead"
+                },
+                "open_prs": [
+                  507
+                ]
+              },
+              {
+                "name": "profile-update/32606986070",
+                "sha": "2197f865dc30844d22e29291a453756e5d436ab2",
+                "last_commit_at": "2026-08-23T00:06:43Z",
+                "author": "zircote-org-monitor[bot]",
+                "merged": false,
+                "behind": 0,
+                "comparison": {
+                  "base": "6d55ba68dd1c7bff34e3b77a25d279949eb8a3bf",
+                  "head": "2197f865dc30844d22e29291a453756e5d436ab2",
+                  "status": "ahead"
+                },
+                "open_prs": [
+                  508
+                ]
+              },
+              {
+                "name": "profile-update/33282780671",
+                "sha": "1d5e83db39152e718630718c33d71585b532379e",
+                "last_commit_at": "2026-08-30T00:13:15Z",
+                "author": "zircote-org-monitor[bot]",
+                "merged": false,
+                "behind": 0,
+                "comparison": {
+                  "base": "6d55ba68dd1c7bff34e3b77a25d279949eb8a3bf",
+                  "head": "1d5e83db39152e718630718c33d71585b532379e",
+                  "status": "ahead"
+                },
+                "open_prs": [
+                  509
+                ]
+              },
+              {
+                "name": "profile-update/34727376165",
+                "sha": "5f57c67bb4a655bcfadfc57e20d78f08e4491dc9",
+                "last_commit_at": "2026-09-13T00:13:14Z",
+                "author": "zircote-org-monitor[bot]",
+                "merged": false,
+                "behind": 0,
+                "comparison": {
+                  "base": "6d55ba68dd1c7bff34e3b77a25d279949eb8a3bf",
+                  "head": "5f57c67bb4a655bcfadfc57e20d78f08e4491dc9",
+                  "status": "ahead"
+                },
+                "open_prs": [
+                  511
+                ]
+              },
+              {
+                "name": "profile-update/35478157018",
+                "sha": "da5367f1f66b7e37d7ad699bdba5ff72bad064ab",
+                "last_commit_at": "2026-09-20T00:13:04Z",
+                "author": "zircote-org-monitor[bot]",
+                "merged": false,
+                "behind": 0,
+                "comparison": {
+                  "base": "6d55ba68dd1c7bff34e3b77a25d279949eb8a3bf",
+                  "head": "da5367f1f66b7e37d7ad699bdba5ff72bad064ab",
+                  "status": "ahead"
+                },
+                "open_prs": [
+                  512
+                ]
+              },
+              {
+                "name": "profile-update/36281827876",
+                "sha": "069b6e4dc4764ece9ec7e941cfff9e121cf5ed4c",
+                "last_commit_at": "2026-09-27T00:13:34Z",
+                "author": "zircote-org-monitor[bot]",
+                "merged": false,
+                "behind": 0,
+                "comparison": {
+                  "base": "6d55ba68dd1c7bff34e3b77a25d279949eb8a3bf",
+                  "head": "069b6e4dc4764ece9ec7e941cfff9e121cf5ed4c",
+                  "status": "ahead"
+                },
+                "open_prs": [
+                  513
+                ]
+              },
+              {
+                "name": "profile-update/37166420982",
+                "sha": "8af2e645221ed84019631288b2313c1513327386",
+                "last_commit_at": "2026-10-04T00:55:44Z",
+                "author": "zircote-org-monitor[bot]",
+                "merged": false,
+                "behind": 0,
+                "comparison": {
+                  "base": "6d55ba68dd1c7bff34e3b77a25d279949eb8a3bf",
+                  "head": "8af2e645221ed84019631288b2313c1513327386",
+                  "status": "ahead"
+                },
+                "open_prs": [
+                  514
+                ]
+              },
+              {
+                "name": "profile-update/38097709291",
+                "sha": "c2ecf2753ecc832089bdb9dc29e7a2184296fd75",
+                "last_commit_at": "2026-10-11T00:14:20Z",
+                "author": "zircote-org-monitor[bot]",
+                "merged": false,
+                "behind": 0,
+                "comparison": {
+                  "base": "6d55ba68dd1c7bff34e3b77a25d279949eb8a3bf",
+                  "head": "c2ecf2753ecc832089bdb9dc29e7a2184296fd75",
+                  "status": "ahead"
+                },
+                "open_prs": [
+                  515
+                ]
+              },
+              {
+                "name": "profile-update/39081835507",
+                "sha": "8ec3ff4af6652672e21b510d7133f03583afa446",
+                "last_commit_at": "2026-10-18T00:11:53Z",
+                "author": "zircote-org-monitor[bot]",
+                "merged": false,
+                "behind": 0,
+                "comparison": {
+                  "base": "6d55ba68dd1c7bff34e3b77a25d279949eb8a3bf",
+                  "head": "8ec3ff4af6652672e21b510d7133f03583afa446",
+                  "status": "ahead"
+                },
+                "open_prs": [
+                  516
+                ]
+              },
+              {
+                "name": "profile-update/40145726054",
+                "sha": "c30d8acd01ec1dee8523c8342958dfd514eea7a5",
+                "last_commit_at": "2026-10-25T00:11:57Z",
+                "author": "zircote-org-monitor[bot]",
+                "merged": false,
+                "behind": 0,
+                "comparison": {
+                  "base": "6d55ba68dd1c7bff34e3b77a25d279949eb8a3bf",
+                  "head": "c30d8acd01ec1dee8523c8342958dfd514eea7a5",
+                  "status": "ahead"
+                },
+                "open_prs": [
+                  517
+                ]
+              },
+              {
+                "name": "profile-update/41255409254",
+                "sha": "54c2987df513dc69c4829304f36a7215d9531b7f",
+                "last_commit_at": "2026-11-01T00:08:56Z",
+                "author": "zircote-org-monitor[bot]",
+                "merged": false,
+                "behind": 0,
+                "comparison": {
+                  "base": "6d55ba68dd1c7bff34e3b77a25d279949eb8a3bf",
+                  "head": "54c2987df513dc69c4829304f36a7215d9531b7f",
+                  "status": "ahead"
+                },
+                "open_prs": [
+                  518
+                ]
+              },
+              {
+                "name": "profile-update/34000679857",
+                "sha": "8fe9203cb5f41bd352114e31863ecde05e651a21",
+                "last_commit_at": "2026-09-06T00:13:31Z",
+                "author": "zircote-org-monitor[bot]",
+                "merged": false,
+                "behind": 0,
+                "comparison": {
+                  "base": "6d55ba68dd1c7bff34e3b77a25d279949eb8a3bf",
+                  "head": "8fe9203cb5f41bd352114e31863ecde05e651a21",
+                  "status": "ahead"
+                },
+                "open_prs": [
+                  510
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "expected": {
+        "action_count": 1,
+        "branch_categories": [
+          [
+            "zircote/.github",
+            "chore/update-dependencies-dec-2025",
+            "stale"
+          ],
+          [
+            "zircote/.github",
+            "copilot/sub-pr-1-again",
+            "stale"
+          ],
+          [
+            "zircote/.github",
+            "dependabot/github_actions/actions/attest-4.1.1",
+            "stale"
+          ],
+          [
+            "zircote/.github",
+            "dependabot/github_actions/actions/cache/restore-6.1.0",
+            "stale"
+          ],
+          [
+            "zircote/.github",
+            "dependabot/github_actions/astral-sh/setup-uv-8.3.2",
+            "stale"
+          ],
+          [
+            "zircote/.github",
+            "dependabot/github_actions/docker/build-push-action-7.3.0",
+            "stale"
+          ],
+          [
+            "zircote/.github",
+            "dependabot/github_actions/docker/login-action-4.4.0",
+            "stale"
+          ],
+          [
+            "zircote/.github",
+            "profile-update/30725154669",
+            "stale"
+          ],
+          [
+            "zircote/.github",
+            "profile-update/31285564700",
+            "stale"
+          ],
+          [
+            "zircote/.github",
+            "profile-update/31916391320",
+            "stale"
+          ],
+          [
+            "zircote/.github",
+            "profile-update/32606986070",
+            "stale"
+          ],
+          [
+            "zircote/.github",
+            "profile-update/33282780671",
+            "stale"
+          ],
+          [
+            "zircote/.github",
+            "profile-update/34727376165",
+            "stale"
+          ],
+          [
+            "zircote/.github",
+            "profile-update/35478157018",
+            "stale"
+          ],
+          [
+            "zircote/.github",
+            "profile-update/36281827876",
+            "stale"
+          ],
+          [
+            "zircote/.github",
+            "profile-update/37166420982",
+            "stale"
+          ],
+          [
+            "zircote/.github",
+            "profile-update/34000679857",
+            "stale"
+          ]
+        ],
+        "counts": {
+          "repositories": 1,
+          "non_default_branches": 21,
+          "merged": 0,
+          "stale": 17
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,620 @@
+{
+  "id": "265c5388",
+  "task": "branchHousekeeping",
+  "cases": [
+    {
+      "id": "clean-repository",
+      "partition": "development",
+      "input": {
+        "now": "2026-11-07T12:00:00Z",
+        "run_id": 1,
+        "run_url": "https://github.com/example/checks/actions/runs/1",
+        "config": {
+          "repos": [
+            "example/repo"
+          ],
+          "excluded_repos": []
+        },
+        "repositories": {
+          "example/repo": {
+            "default_branch": "main",
+            "archived": false,
+            "branches": [
+              {
+                "name": "main",
+                "last_commit_at": "2026-09-28T12:00:00.000Z",
+                "author": "contributor",
+                "merged": false,
+                "behind": 4,
+                "open_prs": []
+              }
+            ]
+          }
+        }
+      },
+      "expected": {
+        "action_count": 1,
+        "branch_categories": []
+      }
+    },
+    {
+      "id": "merged-branch",
+      "partition": "development",
+      "input": {
+        "now": "2026-11-07T12:00:00Z",
+        "run_id": 1,
+        "run_url": "https://github.com/example/checks/actions/runs/1",
+        "config": {
+          "repos": [
+            "example/repo"
+          ],
+          "excluded_repos": []
+        },
+        "repositories": {
+          "example/repo": {
+            "default_branch": "main",
+            "archived": false,
+            "branches": [
+              {
+                "name": "main",
+                "last_commit_at": "2026-09-28T12:00:00.000Z",
+                "author": "contributor",
+                "merged": false,
+                "behind": 4,
+                "open_prs": []
+              },
+              {
+                "name": "feature",
+                "last_commit_at": "2026-11-06T12:00:00.000Z",
+                "author": "contributor",
+                "merged": true,
+                "behind": 4,
+                "open_prs": []
+              }
+            ]
+          }
+        }
+      },
+      "expected": {
+        "action_count": 1,
+        "branch_categories": [
+          [
+            "example/repo",
+            "feature",
+            "merged"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "stale-unmerged",
+      "partition": "held_out",
+      "input": {
+        "now": "2026-11-07T12:00:00Z",
+        "run_id": 1,
+        "run_url": "https://github.com/example/checks/actions/runs/1",
+        "config": {
+          "repos": [
+            "example/repo"
+          ],
+          "excluded_repos": []
+        },
+        "repositories": {
+          "example/repo": {
+            "default_branch": "main",
+            "archived": false,
+            "branches": [
+              {
+                "name": "feature",
+                "last_commit_at": "2026-09-28T12:00:00.000Z",
+                "author": "contributor",
+                "merged": false,
+                "behind": 4,
+                "open_prs": []
+              }
+            ]
+          }
+        }
+      },
+      "expected": {
+        "action_count": 1,
+        "branch_categories": [
+          [
+            "example/repo",
+            "feature",
+            "stale"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "protected-main",
+      "partition": "held_out",
+      "input": {
+        "now": "2026-11-07T12:00:00Z",
+        "run_id": 1,
+        "run_url": "https://github.com/example/checks/actions/runs/1",
+        "config": {
+          "repos": [
+            "example/repo"
+          ],
+          "excluded_repos": []
+        },
+        "repositories": {
+          "example/repo": {
+            "default_branch": "main",
+            "archived": false,
+            "branches": [
+              {
+                "name": "main",
+                "last_commit_at": "2026-09-08T12:00:00.000Z",
+                "author": "contributor",
+                "merged": true,
+                "behind": 4,
+                "open_prs": []
+              }
+            ]
+          }
+        }
+      },
+      "expected": {
+        "action_count": 1,
+        "branch_categories": []
+      }
+    },
+    {
+      "id": "protected-master",
+      "partition": "held_out",
+      "input": {
+        "now": "2026-11-07T12:00:00Z",
+        "run_id": 1,
+        "run_url": "https://github.com/example/checks/actions/runs/1",
+        "config": {
+          "repos": [
+            "example/repo"
+          ],
+          "excluded_repos": []
+        },
+        "repositories": {
+          "example/repo": {
+            "default_branch": "main",
+            "archived": false,
+            "branches": [
+              {
+                "name": "master",
+                "last_commit_at": "2026-09-08T12:00:00.000Z",
+                "author": "contributor",
+                "merged": true,
+                "behind": 4,
+                "open_prs": []
+              }
+            ]
+          }
+        }
+      },
+      "expected": {
+        "action_count": 1,
+        "branch_categories": []
+      }
+    },
+    {
+      "id": "protected-develop",
+      "partition": "held_out",
+      "input": {
+        "now": "2026-11-07T12:00:00Z",
+        "run_id": 1,
+        "run_url": "https://github.com/example/checks/actions/runs/1",
+        "config": {
+          "repos": [
+            "example/repo"
+          ],
+          "excluded_repos": []
+        },
+        "repositories": {
+          "example/repo": {
+            "default_branch": "main",
+            "archived": false,
+            "branches": [
+              {
+                "name": "develop",
+                "last_commit_at": "2026-09-08T12:00:00.000Z",
+                "author": "contributor",
+                "merged": true,
+                "behind": 4,
+                "open_prs": []
+              }
+            ]
+          }
+        }
+      },
+      "expected": {
+        "action_count": 1,
+        "branch_categories": []
+      }
+    },
+    {
+      "id": "protected-release/1.0",
+      "partition": "held_out",
+      "input": {
+        "now": "2026-11-07T12:00:00Z",
+        "run_id": 1,
+        "run_url": "https://github.com/example/checks/actions/runs/1",
+        "config": {
+          "repos": [
+            "example/repo"
+          ],
+          "excluded_repos": []
+        },
+        "repositories": {
+          "example/repo": {
+            "default_branch": "main",
+            "archived": false,
+            "branches": [
+              {
+                "name": "release/1.0",
+                "last_commit_at": "2026-09-08T12:00:00.000Z",
+                "author": "contributor",
+                "merged": true,
+                "behind": 4,
+                "open_prs": []
+              }
+            ]
+          }
+        }
+      },
+      "expected": {
+        "action_count": 1,
+        "branch_categories": []
+      }
+    },
+    {
+      "id": "exact-30-days",
+      "partition": "held_out",
+      "input": {
+        "now": "2026-11-07T12:00:00Z",
+        "run_id": 1,
+        "run_url": "https://github.com/example/checks/actions/runs/1",
+        "config": {
+          "repos": [
+            "example/repo"
+          ],
+          "excluded_repos": []
+        },
+        "repositories": {
+          "example/repo": {
+            "default_branch": "main",
+            "archived": false,
+            "branches": [
+              {
+                "name": "feature",
+                "last_commit_at": "2026-10-08T12:00:00.000Z",
+                "author": "contributor",
+                "merged": false,
+                "behind": 4,
+                "open_prs": []
+              }
+            ]
+          }
+        }
+      },
+      "expected": {
+        "action_count": 1,
+        "branch_categories": []
+      }
+    },
+    {
+      "id": "just-over-30-days",
+      "partition": "held_out",
+      "input": {
+        "now": "2026-11-07T12:00:00Z",
+        "run_id": 1,
+        "run_url": "https://github.com/example/checks/actions/runs/1",
+        "config": {
+          "repos": [
+            "example/repo"
+          ],
+          "excluded_repos": []
+        },
+        "repositories": {
+          "example/repo": {
+            "default_branch": "main",
+            "archived": false,
+            "branches": [
+              {
+                "name": "feature",
+                "last_commit_at": "2026-10-08T11:59:59.000Z",
+                "author": "contributor",
+                "merged": false,
+                "behind": 4,
+                "open_prs": []
+              }
+            ]
+          }
+        }
+      },
+      "expected": {
+        "action_count": 1,
+        "branch_categories": [
+          [
+            "example/repo",
+            "feature",
+            "stale"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "recent-unmerged",
+      "partition": "held_out",
+      "input": {
+        "now": "2026-11-07T12:00:00Z",
+        "run_id": 1,
+        "run_url": "https://github.com/example/checks/actions/runs/1",
+        "config": {
+          "repos": [
+            "example/repo"
+          ],
+          "excluded_repos": []
+        },
+        "repositories": {
+          "example/repo": {
+            "default_branch": "main",
+            "archived": false,
+            "branches": [
+              {
+                "name": "feature",
+                "last_commit_at": "2026-11-05T12:00:00.000Z",
+                "author": "contributor",
+                "merged": false,
+                "behind": 4,
+                "open_prs": []
+              }
+            ]
+          }
+        }
+      },
+      "expected": {
+        "action_count": 1,
+        "branch_categories": []
+      }
+    },
+    {
+      "id": "merged-takes-precedence",
+      "partition": "held_out",
+      "input": {
+        "now": "2026-11-07T12:00:00Z",
+        "run_id": 1,
+        "run_url": "https://github.com/example/checks/actions/runs/1",
+        "config": {
+          "repos": [
+            "example/repo"
+          ],
+          "excluded_repos": []
+        },
+        "repositories": {
+          "example/repo": {
+            "default_branch": "main",
+            "archived": false,
+            "branches": [
+              {
+                "name": "feature",
+                "last_commit_at": "2026-09-08T12:00:00.000Z",
+                "author": "contributor",
+                "merged": true,
+                "behind": 4,
+                "open_prs": []
+              }
+            ]
+          }
+        }
+      },
+      "expected": {
+        "action_count": 1,
+        "branch_categories": [
+          [
+            "example/repo",
+            "feature",
+            "merged"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "open-pr-context",
+      "partition": "held_out",
+      "input": {
+        "now": "2026-11-07T12:00:00Z",
+        "run_id": 1,
+        "run_url": "https://github.com/example/checks/actions/runs/1",
+        "config": {
+          "repos": [
+            "example/repo"
+          ],
+          "excluded_repos": []
+        },
+        "repositories": {
+          "example/repo": {
+            "default_branch": "main",
+            "archived": false,
+            "branches": [
+              {
+                "name": "feature",
+                "last_commit_at": "2026-09-28T12:00:00.000Z",
+                "author": "contributor",
+                "merged": false,
+                "behind": 4,
+                "open_prs": [
+                  42
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "expected": {
+        "action_count": 1,
+        "branch_categories": [
+          [
+            "example/repo",
+            "feature",
+            "stale"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "excluded-repository",
+      "partition": "held_out",
+      "input": {
+        "now": "2026-11-07T12:00:00Z",
+        "run_id": 1,
+        "run_url": "https://github.com/example/checks/actions/runs/1",
+        "config": {
+          "repos": [
+            "example/repo"
+          ],
+          "excluded_repos": [
+            "example/repo"
+          ]
+        },
+        "repositories": {
+          "example/repo": {
+            "default_branch": "main",
+            "archived": false,
+            "branches": [
+              {
+                "name": "feature",
+                "last_commit_at": "2026-09-28T12:00:00.000Z",
+                "author": "contributor",
+                "merged": false,
+                "behind": 4,
+                "open_prs": []
+              }
+            ]
+          }
+        }
+      },
+      "expected": {
+        "action_count": 1,
+        "branch_categories": []
+      }
+    },
+    {
+      "id": "archived-repository",
+      "partition": "held_out",
+      "input": {
+        "now": "2026-11-07T12:00:00Z",
+        "run_id": 1,
+        "run_url": "https://github.com/example/checks/actions/runs/1",
+        "config": {
+          "repos": [
+            "example/repo"
+          ],
+          "excluded_repos": []
+        },
+        "repositories": {
+          "example/repo": {
+            "archived": true
+          }
+        }
+      },
+      "expected": {
+        "action_count": 1,
+        "branch_categories": []
+      }
+    },
+    {
+      "id": "api-error",
+      "partition": "held_out",
+      "input": {
+        "now": "2026-11-07T12:00:00Z",
+        "run_id": 1,
+        "run_url": "https://github.com/example/checks/actions/runs/1",
+        "config": {
+          "repos": [
+            "example/repo"
+          ],
+          "excluded_repos": []
+        },
+        "repositories": {
+          "example/repo": {
+            "error": "HTTP403"
+          }
+        }
+      },
+      "expected": {
+        "action_count": 1,
+        "branch_categories": []
+      }
+    },
+    {
+      "id": "nonstandard-default",
+      "partition": "held_out",
+      "input": {
+        "now": "2026-11-07T12:00:00Z",
+        "run_id": 1,
+        "run_url": "https://github.com/example/checks/actions/runs/1",
+        "config": {
+          "repos": [
+            "example/repo"
+          ],
+          "excluded_repos": []
+        },
+        "repositories": {
+          "example/repo": {
+            "default_branch": "trunk",
+            "branches": [
+              {
+                "name": "trunk",
+                "last_commit_at": "2026-09-08T12:00:00.000Z",
+                "author": "contributor",
+                "merged": true,
+                "behind": 4,
+                "open_prs": []
+              }
+            ]
+          }
+        }
+      },
+      "expected": {
+        "action_count": 1,
+        "branch_categories": []
+      }
+    },
+    {
+      "id": "unknown-merged-state",
+      "partition": "held_out",
+      "input": {
+        "now": "2026-11-07T12:00:00Z",
+        "run_id": 1,
+        "run_url": "https://github.com/example/checks/actions/runs/1",
+        "config": {
+          "repos": [
+            "example/repo"
+          ],
+          "excluded_repos": []
+        },
+        "repositories": {
+          "example/repo": {
+            "default_branch": "main",
+            "archived": false,
+            "branches": [
+              {
+                "name": "feature",
+                "last_commit_at": "2026-09-28T12:00:00.000Z",
+                "author": "contributor",
+                "merged": null,
+                "behind": 4,
+                "open_prs": []
+              }
+            ]
+          }
+        }
+      },
+      "expected": {
+        "action_count": 1,
+        "branch_categories": []
+      }
+    }
+  ]
+}
