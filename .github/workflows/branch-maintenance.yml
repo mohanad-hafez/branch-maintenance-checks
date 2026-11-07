@@ -1,0 +1,30 @@
+name: Branch maintenance
+on:
+  push:
+    branches: [replacement-branch-maintenance-01]
+  workflow_dispatch:
+permissions:
+  contents: read
+  pull-requests: read
+  issues: write
+concurrency:
+  group: branch-maintenance
+  cancel-in-progress: false
+jobs:
+  report:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Report branches
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: node .github/scripts/branch-maintenance.cjs
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: branch-report
+          path: branch-maintenance-result.json
+          retention-days: 7

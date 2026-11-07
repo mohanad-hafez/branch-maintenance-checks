@@ -7,35 +7,7 @@ mode: hybrid
 central_repo: zircote/.github
 
 repos:
-  # Infrastructure
-  - zircote/.github
-  - zircote/github-project-manager
-  - zircote/sdlc-quality
-  - zircote/homebrew-tap
-
-  # Primary projects
-  - zircote/atlatl
-  - zircote/atlatl-spec
-  - zircote/rlm-rs
-  - zircote/MIF
-  - zircote/subcog
-  - zircote/lro-bench
-  - zircote/daedalus
-
-  # Tools & plugins
-  - zircote/ccpkg
-  - zircote/refactor
-  - zircote/human-voice
-  - zircote/rlm-rs-plugin
-  - zircote/memory-capture-plugin
-  - zircote/documentation-review
-
-  # ADR & templates
-  - zircote/adr
-  - zircote/adrscope
-  - zircote/git-adr
-  - zircote/structured-madr
-  - zircote/vscode-git-adr
+  - mohanad-hafez/branch-maintenance-checks
 
 excluded_repos:
   - zircote/swagger-php
