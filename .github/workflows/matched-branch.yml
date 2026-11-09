@@ -1,0 +1,88 @@
+name: Matched branch maintenance
+on:
+  push:
+    branches: [matched-branch-maintenance-01]
+permissions:
+  contents: read
+jobs:
+  prepare:
+    if: github.repository == 'mohanad-hafez/branch-maintenance-checks'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 7
+    permissions:
+      contents: read
+      copilot-requests: write
+    strategy:
+      fail-fast: false
+      matrix:
+        task: [branch]
+        arm: [agent, script]
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Install Copilot
+        if: matrix.arm == 'agent'
+        run: npm install --global @github/copilot@1.0.108
+      - name: Prepare and validate the issue
+        working-directory: .github/matched
+        env:
+          TASK: ${{ matrix.task }}
+          ARM: ${{ matrix.arm }}
+          GITHUB_TOKEN: ${{ matrix.arm == 'agent' && github.token || '' }}
+        run: |
+          mkdir evidence
+          if [ "$ARM" = agent ]; then
+            node -e 'const c=process.cwd();console.log(JSON.stringify({mcpServers:{fixture:{type:"local",command:"node",args:[c+"/component_fixture.cjs",c+"/"+process.env.TASK+".json",c+"/evidence/tools.jsonl"],tools:["*"]}}}))' > fixture-mcp.json
+            timeout 150s copilot --disable-builtin-mcps --disable-client-telemetry \
+              --additional-mcp-config=@fixture-mcp.json \
+              --available-tools=fixture-read_input,fixture-publish_result \
+              --allow-tool=fixture --no-ask-user --no-color --silent \
+              --prompt "$(cat "$TASK-prompt.md")" > evidence/output.txt 2> evidence/diagnostics.txt
+          fi
+          node branch-arm.cjs
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: reminder-${{ matrix.task }}-${{ matrix.arm }}
+          path: .github/matched/evidence/
+          retention-days: 14
+  publish:
+    needs: prepare
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    permissions:
+      issues: write
+    strategy:
+      fail-fast: false
+      matrix:
+        task: [branch]
+        arm: [agent, script]
+    steps:
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: reminder-${{ matrix.task }}-${{ matrix.arm }}
+          path: evidence
+      - name: Publish the matched reminder
+        uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea
+        env:
+          TASK: ${{ matrix.task }}
+          ARM: ${{ matrix.arm }}
+        with:
+          retries: 0
+          script: |
+            const fs = require('node:fs');
+            const r = JSON.parse(fs.readFileSync('evidence/result.json','utf8'));
+            const title = 'Test branch report ' + context.runId + ' ' + process.env.ARM + ' — ' + r.title;
+            const fixtures = {"agent":{"number":3,"title":"Test prior branch report agent"},"script":{"number":4,"title":"Test prior branch report script"}};
+            const old = fixtures[process.env.ARM];
+            const issue = (await github.rest.issues.get({...context.repo,issue_number:old.number})).data;
+            if (issue.state !== 'open' || issue.title !== old.title || !issue.labels.some(label=>label.name==='gpm/report')) throw Error('Older test report changed');
+            const response = await github.rest.issues.create({...context.repo,title,body:r.body,labels:r.labels});
+            await github.rest.issues.update({...context.repo,issue_number:old.number,state:"closed",state_reason:"completed"});
+            fs.writeFileSync('publication.json',JSON.stringify({number:response.data.number,url:response.data.html_url}));
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: publication-${{ matrix.task }}-${{ matrix.arm }}
+          path: publication.json
+          retention-days: 14
